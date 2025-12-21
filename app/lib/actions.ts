@@ -77,8 +77,10 @@ export async function createInvoice(prevState: State, formData: FormData) {
   }
 
   // 5. Revalidasi cache dan arahkan kembali ke tabel invoices
+  revalidatePath('/dashboard');
   revalidatePath('/dashboard/invoices');
   redirect('/dashboard/invoices');
+
 }
 
 /* =======================
@@ -117,8 +119,10 @@ export async function updateInvoice(
     return { message: 'Database Error: Failed to Update Invoice.' };
   }
 
+  revalidatePath('/dashboard');
   revalidatePath('/dashboard/invoices');
   redirect('/dashboard/invoices');
+
 }
 
 /* =======================
@@ -130,8 +134,10 @@ export async function deleteInvoice(id: string) {
     WHERE id = ${id}
   `;
 
+  revalidatePath('/dashboard');
   revalidatePath('/dashboard/invoices');
   redirect('/dashboard/invoices');
+
 }
 
 export async function authenticate(
